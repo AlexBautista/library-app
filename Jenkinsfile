@@ -24,7 +24,8 @@ stages {
         }
         stage('Deploy to Kubernetes') {
             steps {
-               /*kubernetesDeploy configs: 'deployment.yaml', kubeconfigId: 'kubeconfig-id'*/
+                echo "Deploying Kubernetes Cluster"
+		/*kubernetesDeploy configs: 'deployment.yaml', kubeconfigId: 'kubeconfig-id'*/
             }
         }
     }
