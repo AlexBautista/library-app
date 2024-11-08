@@ -3,7 +3,8 @@ pipeline {
 stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/AlexBautista/library-app.git'
+                checkout scmGit(branches: [[name: '*/main']],
+                extensions: [], userRemoteConfigs: [[credentialsId: 'github-jenkins', url: 'https://github.com/AlexBautista/library-app']])
             }
         }
         stage('Build Docker Image') {
