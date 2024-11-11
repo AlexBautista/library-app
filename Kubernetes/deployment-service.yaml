@@ -21,6 +21,14 @@ spec:
         image: "balat2020/library-app:latest"
         ports:
           - containerPort: 5000
+        volumeMounts:
+          - name: sqlite-storage
+            mountPath: /app/db  # Mount path inside the container (SQLite db will be here)
+      volumes:
+        - name: sqlite-storage
+          persistentVolumeClaim:
+            claimName: sqlite-pvc
+            
 ---
 apiVersion: v1
 kind: Service
