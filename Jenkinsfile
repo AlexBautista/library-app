@@ -29,8 +29,6 @@ pipeline {
             steps {
                 echo "Deploying Kubernetes Cluster"
                 /*kubernetesDeploy configs: 'deployment.yaml', kubeconfigId: 'kubeconfig-id'*/
-                withKubeConfig(caCertificate: '', clusterName: 'minikube', contextName: 'minikube', credentialsId: 'my_kubernetes', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.49.2:8443') {
-                    sh "kubectl get ns"
                 }
             }
         }
