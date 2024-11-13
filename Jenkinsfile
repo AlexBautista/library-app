@@ -34,6 +34,9 @@ pipeline {
                                 sh 'curl -LO "https://dl.k8s.io/release/v1.31.0/bin/linux/amd64/kubectl"'  
                                 sh 'chmod u+x ./kubectl'  
                                 sh './kubectl get pods'
+                                sh './kubectl kubectl apply -f Kubernetes/deployment-service.yaml'
+                                sh './kubectl get deployments'
+
                     }
                   }
             }
