@@ -27,9 +27,13 @@ pipeline {
         }
         stage('Deploy to Kubernetes') {
             steps {
-                echo "Deploying Kubernetes Cluster"
-                /*kubernetesDeploy configs: 'deployment.yaml', kubeconfigId: 'kubeconfig-id'*/
-                }
+                echo "Deploying Kubernetes Cluster"            
+                withKubeConfig(caCertificate: '', clusterName: 'minikube', contextName: 'minikube', credentialsId: 'my_kubernetes', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.49.2:8443') {
+                                sh 'curl -LO "curl -LO https://dl.k8s.io/release/v1.31.0/bin/linux/amd64/kubectl"'  
+                                sh 'chmod u+x ./kubectl'  
+                                sh './kubectl get pods'
+                    }
+                  }
             }
         }
     }
