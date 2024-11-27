@@ -3,11 +3,14 @@
 import sqlite3
 
 class Book:
-    def __init__(self, title, author, publication_year, book_id=1):
+    last_book_id = 0
+
+    def __init__(self, title, author, publication_year, book_id=None):
         self.title = title
         self.author = author
         self.publication_year = publication_year
-        self.book_id = book_id
+        self.book_id = book_id if book_id is not None else Book.last_book_id += 1
+        self.book_id = Book.last_book_id  # Default to  if no book_id is provided
 
     @staticmethod
     def connect_db():
