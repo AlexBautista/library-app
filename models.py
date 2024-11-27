@@ -10,10 +10,8 @@ class Book:
         self.author = author
         self.publication_year = publication_year
         if book_id is None:
-          self.book_id = Book.last_book_id  # Default to if no book_id is provided
-        else:        
+          self.book_id = Book.last_book_id  # Default to if no book_id is provided  
           Book.last_book_id += 1
-          self.book_id = book_id
 
     @staticmethod
     def connect_db():
